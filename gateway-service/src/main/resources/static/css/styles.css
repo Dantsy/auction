@@ -1,0 +1,53 @@
+.text {
+    color: #FFD700;
+    font: italic small-caps bold 30px/2 cursive;
+}
+
+.image {
+    width: 400px;
+}
+
+.auction {
+    width: 300px;
+}
+
+.start:hover,
+.start {
+    font: italic small-caps bold 30px/2 cursive;
+    text-decoration: none;
+    color: #FFD700;
+}
+
+.bid {
+    font: italic small-caps bold 14px/2 cursive;
+    color: #006400;
+}
+
+.cabinet:hover,
+.cabinet {
+    font: italic small-caps bold 14px/2 cursive;
+    text-decoration: none;
+    color: #FFD700;
+}
+
+
+.btn-outline-success {
+    border-color: #FFD700;
+    color: #FFD700;
+}
+
+.btn-outline-success:hover {
+    background-color: #FFD700;
+    color: #000;
+}
+
+
+.table-success {
+    background-color: #006400;
+    color: #FFD700;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border-color: #FFD700;
+}

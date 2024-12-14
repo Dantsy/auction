@@ -1,0 +1,26 @@
+server:
+  port: 8080
+  forward-headers-strategy: FRAMEWORK
+
+spring:
+  application:
+    name: auction-platform
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+  profiles:
+    active: resilience4j
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+use: feign
+
+token:
+  signing:
+    key: 53A73E5F1C4E0A2D3B5F2D784E6A1B423D6F247D1F6E5C3A596D635A75327855
