@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css}"
+      rel="stylesheet" type="text/css">
+<link th:href="@{/css/styles.css}"
+      rel="stylesheet" type="text/css">
+<head>
+    <meta charset="UTF-8">
+    <title>Auction</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center my-4">Welcome to the Auction!</h1>
+
+    <div class="row align-items-center my-4">
+        <div class="col-4">
+            <img class="image" th:src="@{static/img/auction1.png}" alt="auction picture"/>
+        </div>
+        <div class="col-8">
+            <span class="lead">Bid on exclusive items and win exciting deals!</span>
+        </div>
+    </div>
+
+    <div th:if="${isAuthorized == false}">
+        <div class="row">
+            <div class="text-center d-grid gap-2 col-6 mx-auto">
+                <button type="button" class="btn btn-outline-primary btn-lg">
+                    <a class="start" th:href="@{/auction/login}">Login</a>
+                </button>
+            </div>
+            <div class="text-center d-grid gap-2 col-6 mx-auto">
+                <button type="button" class="btn btn-outline-primary btn-lg">
+                    <a class="start" th:href="@{/auction/register}">Register</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${isAuthorized == true}">
+        <div class="row my-4">
+            <div class="col-12 text-center">
+                <button type="button" class="btn btn-success btn-lg">
+                    <a class="start" th:href="@{/auction/items}">View Auction Items</a>
+                </button>
+            </div>
+        </div>
+
+        <div th:if="${hasActiveBids == true}" class="row my-4">
+            <div class="col-12 text-center">
+                <button type="button" class="btn btn-info btn-lg">
+                    <a class="start" th:href="@{/auction/my-bids}">View My Bids</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${isAuthorized == true && hasWonItems == true}" class="row my-4">
+        <div class="col-12 text-center">
+            <button type="button" class="btn btn-warning btn-lg">
+                <a class="start" th:href="@{/auction/won-items}">View Won Items</a>
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

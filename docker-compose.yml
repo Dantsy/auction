@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  auction-db:
+    image: postgres:13.3
+    container_name: auctionDB
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: auctionDB
+    ports:
+      - "5430:5432"
+    volumes:
+      - postgres-data-auction:/var/lib/postgresql/data
+
+  authorization-db:
+    image: postgres:13.3
+    container_name: authorizationDB
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: authorizationDB
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data-authorization:/var/lib/postgresql/data
+
+  auction-api:
+    build:
+      context: ./auction-api
+      dockerfile: Dockerfile
+    container_name: auction-api
+    ports:
+      - "8086:8089"
+    depends_on:
+      - auction-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://auction-db:5432/auctionDB
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+
+  authorization:
+    build:
+      context: ./authorization-server
+      dockerfile: Dockerfile
+    container_name: authorization
+    ports:
+      - "8081:8085"
+    depends_on:
+      - authorization-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://authorization-db:5432/authorizationDB
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+
+volumes:
+  postgres-data-auction:
+  postgres-data-authorization:

@@ -1,0 +1,6 @@
+ _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _
+  / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \
+ ( a | u | c | t | i | o | n | - | p | l | a | t | f | o | r | m )
+  \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/
+${application.title} ${application.version}
+Powered by Spring Boot ${spring-boot.version}
